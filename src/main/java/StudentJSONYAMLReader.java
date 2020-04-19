@@ -6,12 +6,12 @@ import java.io.IOException;
 import java.io.Reader;
 import java.nio.CharBuffer;
 
-public class StudentJSONReader extends Reader {
+public class StudentJSONYAMLReader extends Reader {
 
     FileReader reader;
     ObjectMapper mapper;
 
-    public StudentJSONReader(String path) throws FileNotFoundException {
+    public StudentJSONYAMLReader(String path) throws FileNotFoundException {
         reader = new FileReader(path);
         mapper = new ObjectMapper();
     }

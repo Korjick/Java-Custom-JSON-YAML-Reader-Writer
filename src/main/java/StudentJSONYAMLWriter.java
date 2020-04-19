@@ -5,12 +5,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 
-public class StudentJSONWriter extends Writer {
+public class StudentJSONYAMLWriter extends Writer {
 
     private ObjectMapper mapper;
     private FileWriter writer;
 
-    public StudentJSONWriter(String path) throws IOException {
+    public StudentJSONYAMLWriter(String path) throws IOException {
         mapper = new ObjectMapper();
         writer = new FileWriter(path);
     }
