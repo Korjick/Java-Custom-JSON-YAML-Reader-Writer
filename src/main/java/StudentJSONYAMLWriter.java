@@ -15,7 +15,7 @@ public class StudentJSONYAMLWriter extends Writer {
         writer = new FileWriter(path);
     }
 
-    public void writeJSONStudent(Student s) throws IOException {
+    public void writeJSONYAMLStudent(Student s) throws IOException {
         mapper.writeValue(writer, s);
     }
 

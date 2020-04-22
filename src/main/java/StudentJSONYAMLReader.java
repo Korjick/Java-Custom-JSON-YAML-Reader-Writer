@@ -16,7 +16,7 @@ public class StudentJSONYAMLReader extends Reader {
         mapper = new ObjectMapper();
     }
 
-    public Student readJSONStudent() throws IOException {
+    public Student readJSONYAMLStudent() throws IOException {
         return mapper.readValue(reader, Student.class);
     }
 
