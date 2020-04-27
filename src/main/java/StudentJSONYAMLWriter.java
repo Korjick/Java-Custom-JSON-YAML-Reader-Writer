@@ -4,15 +4,23 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class StudentJSONYAMLWriter extends Writer {
 
     private ObjectMapper mapper;
     private FileWriter writer;
+    private String type;
 
-    public StudentJSONYAMLWriter(String path) throws IOException {
+    public StudentJSONYAMLWriter(Path directory, String filename, String type) throws IOException {
+        if(type.trim().toLowerCase().equals("yaml")) this.type = "yaml";
+        else this.type = "json";
+
         mapper = new ObjectMapper();
-        writer = new FileWriter(path);
+        if(Files.isDirectory(directory))
+            writer = new FileWriter(directory.toAbsolutePath().normalize().resolve(filename).toString() + "." + type);
+        else throw new IOException("Неправильно указан путь к папке");
     }
 
     public void writeJSONYAMLStudent(Student s) throws IOException {

@@ -5,14 +5,18 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.CharBuffer;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class StudentJSONYAMLReader extends Reader {
 
     FileReader reader;
     ObjectMapper mapper;
 
-    public StudentJSONYAMLReader(String path) throws FileNotFoundException {
-        reader = new FileReader(path);
+    public StudentJSONYAMLReader(Path path) throws IOException {
+        if(Files.exists(path) && !Files.isDirectory(path))
+            reader = new FileReader(path.toAbsolutePath().normalize().toString());
+        else throw new IOException("Неверно указан путь к файлу");
         mapper = new ObjectMapper();
     }
 

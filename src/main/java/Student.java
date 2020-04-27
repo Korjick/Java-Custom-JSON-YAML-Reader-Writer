@@ -13,6 +13,10 @@ public class Student implements Serializable {
     private char sex;
     private int birthDate, birthMonth, birthYear;
 
+    public Student(){
+        super();
+    }
+
     public Student(String name, String group, char sex, int birthDate, int birthMonth, int birthYear) {
         this.name = name;
         this.group = group;
